@@ -1,5 +1,5 @@
 <template>
-  <input class="hueta" v-for="(item,index) in 5" v-bind:key="item.id" v-model="codeArray[index]" @paste="onPaste" maxlength="1">
+  <input class="code-cell" v-for="(item,index) in 5" v-bind:key="item.id" v-model="codeArray[index]" @paste="onPaste" maxlength="1">
   <br>
   <br>
   <button id="btn" :disabled="isDisabled">Submit</button>
@@ -10,7 +10,7 @@
 <script>
 
 export default {
-  name: 'HelloWorld',
+  name: 'CodeCells',
   data() {
     return {
       codeArray: [],
@@ -22,7 +22,6 @@ export default {
   methods: {
     onPaste(evt) {
       let pasted = evt.clipboardData.getData('text/plain')
-      // if (pasted.length === 5 && )
       if (parseInt(pasted).toString().length === 5){
         for (let i = 0; i < 5; i++) {
           this.codeArray[i] = pasted[i]
@@ -37,8 +36,8 @@ export default {
       }
     },
 
-    test(el) {
-      let txts = document.querySelectorAll(el);// Получаем все входные объекты
+    main(el) {
+      let txts = document.querySelectorAll(el);
       let arr = this.codeArray
 
       for (let i = 0; i < txts.length; i++) {
@@ -57,7 +56,7 @@ export default {
           let e2 = e ? e : event;
           let keyCode = e2.keyCode || e2.which;
 
-          if (keyCode !== 8) { // Если не удалять событие
+          if (keyCode !== 8) {
               if (parseInt(arr[i])){
                 arr[i] = parseInt(arr[i])
                 txts[i+1].focus()
@@ -65,20 +64,14 @@ export default {
                 arr[i] =''
 
               }
-            /* if (keyCode < 48 || keyCode > 57) {
-                arr[i] = parseInt(arr[i]) ? arr[i] : ''
-            } else if (i<4){
-              txts[i+1].focus()
-
-            }*/
           }
         }
       }
     }
   },
   mounted() {
-    this.txts = document.querySelectorAll('.hueta')
-    this.test('.hueta');
+    this.txts = document.querySelectorAll('.code-cell')
+    this.main('.code-cell');
   },
   watch: {
     codeArray: {

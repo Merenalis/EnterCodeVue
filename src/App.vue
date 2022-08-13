@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld/>
+  <CodeCells/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CodeCells from './components/CodeCells.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CodeCells
   }
 }
 </script>
