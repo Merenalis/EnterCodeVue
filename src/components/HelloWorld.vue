@@ -58,11 +58,19 @@ export default {
           let keyCode = e2.keyCode || e2.which;
 
           if (keyCode !== 8) { // Если не удалять событие
-            if (keyCode < 48 || keyCode > 57) {
+              if (parseInt(arr[i])){
+                arr[i] = parseInt(arr[i])
+                txts[i+1].focus()
+              } else {
+                arr[i] =''
+
+              }
+            /* if (keyCode < 48 || keyCode > 57) {
                 arr[i] = parseInt(arr[i]) ? arr[i] : ''
             } else if (i<4){
               txts[i+1].focus()
-            }
+
+            }*/
           }
         }
       }
